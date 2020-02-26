@@ -12,43 +12,42 @@ const getItalicName = (isItalic: boolean) => {
 };
 
 const font_style_generator = (font_family: string, font_weight: FontWeight, font_style: FontStyle) => {
-  let fontFamily = `${font_family}-`;
-  const isItalic: boolean = font_style == 'italic';
+  let fontFamily = `${font_family}`;
+  const isItalic = font_style == 'italic';
+  console.log(fontFamily);
   switch (font_weight) {
     case 'normal':
-      fontFamily += isItalic ? 'Italic' : 'Regular';
+      if (isItalic) fontFamily += '-Italic';
       break;
     case 'bold':
-      fontFamily += 'Bold' + getItalicName(isItalic);
+      fontFamily += '-Bold' + getItalicName(isItalic);
       break;
     case '100':
     case '200':
-      fontFamily += 'Thin' + getItalicName(isItalic);
+      fontFamily += '-Thin' + getItalicName(isItalic);
       break;
     case '300':
-      fontFamily += 'Light' + getItalicName(isItalic);
+      fontFamily += '-Light' + getItalicName(isItalic);
       break;
     case '400':
-      fontFamily += isItalic ? 'Italic' : 'Regular';
+      fontFamily += isItalic ? '-Italic' : '-Regular';
       break;
     case '500':
     case '600':
-      fontFamily += 'Medium' + getItalicName(isItalic);
+      fontFamily += '-Medium' + getItalicName(isItalic);
       break;
     case '700':
     case '800':
-      fontFamily += 'Bold' + getItalicName(isItalic);
+      fontFamily += '-Bold' + getItalicName(isItalic);
       break;
     case '900':
-      fontFamily += 'Black' + getItalicName(isItalic);
+      fontFamily += '-Black' + getItalicName(isItalic);
       break;
     case 'bolder':
     case 'lighter':
     default:
-      fontFamily += isItalic ? 'Italic' : 'Regular';
       break;
   }
-
   return { fontFamily: fontFamily, fontWeight: 'normal', fontStyle: 'normal' };
 };
 
@@ -78,15 +77,12 @@ class FontManager {
     }
   };
 
-  override = (...args: any) => {
+  override = (...args) => {
     const origin = oldRender.call(this, ...args);
-    if (origin.props.style) {
-      const fontWeight: FontWeight = origin.props.style.fontWeight ? origin.props.style.fontWeight : '400';
-
-      const fontStyle: FontStyle = origin.props.style.fontStyle ? origin.props.style.fontStyle : 'normal';
-
-      const fontFamily: string = origin.props.style.fontFamily ? origin.props.style.fontFamily : 'Roboto';
-
+    if (origin.props.style && !Array.isArray(origin.props.style)) {
+      const fontWeight = origin.props.style.fontWeight ? origin.props.style.fontWeight : '400';
+      const fontStyle = origin.props.style.fontStyle ? origin.props.style.fontStyle : 'normal';
+      const fontFamily = origin.props.style.fontFamily ? origin.props.style.fontFamily : 'Roboto';
       return React.cloneElement(origin, {
         style: [{}, origin.props.style, font_style_generator(fontFamily, fontWeight, fontStyle)],
       });
