@@ -1,6 +1,5 @@
 declare class FontManager {
-  init: (isExpo?: boolean) => Promise<void>;
-  override: (...args: any[]) => any;
+  init: () => Promise<void>;
 }
 declare const _default: FontManager;
 export default _default;
