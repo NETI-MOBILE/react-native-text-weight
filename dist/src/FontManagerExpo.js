@@ -7,18 +7,18 @@ class FontManagerExpo {
             if (Platform.OS === 'android') {
                 const Font = require('expo-font');
                 await Font.loadAsync({
-                    'Roboto-Black': require('./fonts/Roboto-Black.ttf'),
-                    'Roboto-BlackItalic': require('./fonts/Roboto-BlackItalic.ttf'),
-                    'Roboto-Medium': require('./fonts/Roboto-Medium.ttf'),
-                    'Roboto-MediumItalic': require('./fonts/Roboto-MediumItalic.ttf'),
-                    'Roboto-Regular': require('./fonts/Roboto-Regular.ttf'),
-                    'Roboto-Thin': require('./fonts/Roboto-Thin.ttf'),
-                    'Roboto-ThinItalic': require('./fonts/Roboto-ThinItalic.ttf'),
-                    'Roboto-Bold': require('./fonts/Roboto-Bold.ttf'),
-                    'Roboto-BoldItalic': require('./fonts/Roboto-BoldItalic.ttf'),
-                    'Roboto-Light': require('./fonts/Roboto-Light.ttf'),
-                    'Roboto-LightItalic': require('./fonts/Roboto-LightItalic.ttf'),
-                    'Roboto-Italic': require('./fonts/Roboto-Italic.ttf'),
+                    'Roboto-Black': require('../Fonts/Roboto-Black.ttf'),
+                    'Roboto-BlackItalic': require('../Fonts/Roboto-BlackItalic.ttf'),
+                    'Roboto-Medium': require('../Fonts/Roboto-Medium.ttf'),
+                    'Roboto-MediumItalic': require('../Fonts/Roboto-MediumItalic.ttf'),
+                    'Roboto-Regular': require('../Fonts/Roboto-Regular.ttf'),
+                    'Roboto-Thin': require('../Fonts/Roboto-Thin.ttf'),
+                    'Roboto-ThinItalic': require('../Fonts/Roboto-ThinItalic.ttf'),
+                    'Roboto-Bold': require('../Fonts/Roboto-Bold.ttf'),
+                    'Roboto-BoldItalic': require('../Fonts/Roboto-BoldItalic.ttf'),
+                    'Roboto-Light': require('../Fonts/Roboto-Light.ttf'),
+                    'Roboto-LightItalic': require('../Fonts/Roboto-LightItalic.ttf'),
+                    'Roboto-Italic': require('../Fonts/Roboto-Italic.ttf'),
                 });
                 Text.render = override;
             }
