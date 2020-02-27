@@ -1,6 +1,6 @@
 def config = project.hasProperty("vectoricons") ? project.vectoricons : [];
 
-def iconFontsDir = config.iconFontsDir ?: "../../node_modules/react-native-text-weight/Fonts";
+def iconFontsDir = config.iconFontsDir ?: "../../node_modules/react-native-text-weight/dist/Fonts";
 def iconFontNames = config.iconFontNames ?: [ "*.ttf" ];
 
 gradle.projectsEvaluated {
