@@ -9,7 +9,6 @@ const getItalicName = (isItalic) => {
 const font_style_generator = (font_family, font_weight, font_style) => {
     let fontFamily = `${font_family}`;
     const isItalic = font_style == 'italic';
-    console.log(fontFamily);
     switch (font_weight) {
         case 'normal':
             if (isItalic)
