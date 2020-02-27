@@ -1,3 +1,2 @@
-import FontManagerExpo from 'src/FontManagerExpo';
-import FontManager from 'src/FontManager';
-export { FontManager, FontManagerExpo };
+export { default as FontManagerExpo } from 'src/FontManagerExpo';
+export { default as FontManager } from 'src/FontManager';
