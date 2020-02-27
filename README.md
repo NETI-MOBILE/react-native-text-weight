@@ -15,12 +15,12 @@ Insert the following code into the starting point of the application (usually Ap
 
 ## Expo
 ```js
-import FontManagerExpo from 'react-native-text-weight';
+import FontManager from 'react-native-text-weight/expo';
 
 const [loaded, setLoaded] = useState(false); // its necessary for font loading async and update ui
 
 useEffect(() => {
-    FontManagerExpo.init().then(() => setLoaded(true));
+    FontManager.init().then(() => setLoaded(true));
 }, []);
 
 return loaded ? (
