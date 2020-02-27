@@ -1,10 +1,13 @@
 {
   "name": "react-native-text-weight",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Fix fontWeight prop for React-native CLI and Expo",
   "author": "NETI-MOBILE",
   "license": "MIT",
-  "repository": "https://github.com/NETI-MOBILE/react-native-text-weight",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NETI-MOBILE/react-native-text-weight.git"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -22,5 +25,17 @@
     "prettier": "1.19.1",
     "jest": "^24.9.0",
     "typescript": "^3.7.3"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/NETI-MOBILE/react-native-text-weight/issues"
+  },
+  "homepage": "https://github.com/NETI-MOBILE/react-native-text-weight#readme",
+  "keywords": [
+    "react-native",
+    "text",
+    "fontWeight",
+    "weight",
+    "fix",
+    "roboto"
+  ]
 }
