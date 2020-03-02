@@ -48,13 +48,30 @@ const font_style_generator = (font_family, font_weight, font_style) => {
 const oldRender = Text.render;
 export function override(...args) {
     const origin = oldRender.call(this, ...args);
-    if (origin.props.style && !Array.isArray(origin.props.style)) {
-        const fontWeight = origin.props.style.fontWeight ? origin.props.style.fontWeight : '400';
-        const fontStyle = origin.props.style.fontStyle ? origin.props.style.fontStyle : 'normal';
-        const fontFamily = origin.props.style.fontFamily ? origin.props.style.fontFamily : 'Roboto';
-        return React.cloneElement(origin, {
-            style: [{}, origin.props.style, font_style_generator(fontFamily, fontWeight, fontStyle)],
-        });
+    if (origin.props.style) {
+        if (!Array.isArray(origin.props.style)) {
+            const fontWeight = origin.props.style.fontWeight ? origin.props.style.fontWeight : '400';
+            const fontStyle = origin.props.style.fontStyle ? origin.props.style.fontStyle : 'normal';
+            const fontFamily = origin.props.style.fontFamily ? origin.props.style.fontFamily : 'Roboto';
+            return React.cloneElement(origin, {
+                style: [{}, origin.props.style, font_style_generator(fontFamily, fontWeight, fontStyle)],
+            });
+        }
+        else {
+            let newStyle = [];
+            console.log('Before', origin.props.style);
+            origin.props.style.map((style) => {
+                const fontWeight = style.fontWeight ? style.fontWeight : '400';
+                const fontStyle = style.fontStyle ? style.fontStyle : 'normal';
+                const fontFamily = style.fontFamily ? style.fontFamily : 'Roboto';
+                console.log({ fontWeight, fontStyle, fontFamily });
+                newStyle.push(font_style_generator(fontFamily, fontWeight, fontStyle));
+            });
+            console.log('After', newStyle);
+            return React.cloneElement(origin, {
+                style: [{}, origin.props.style, ...newStyle],
+            });
+        }
     }
     return origin;
 }
