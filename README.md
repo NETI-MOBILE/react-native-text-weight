@@ -48,8 +48,6 @@ return loaded ? (
 
 ## Issues
 - Custom fonts are not well-tested
-- FontWeight for ```<Text>``` inside ```<Text>``` not work
 
 ## TO DO
-- fix ```<Text>``` inside ```<Text>```
 - make all synchronous
