@@ -61,15 +61,16 @@ export function override(this: any, ...args) {
       });
     } else {
       let newStyle: any = [];
-      console.log('Before', origin.props.style);
       origin.props.style.map((style) => {
-        const fontWeight = style.fontWeight ? style.fontWeight : '400';
-        const fontStyle = style.fontStyle ? style.fontStyle : 'normal';
-        const fontFamily = style.fontFamily ? style.fontFamily : 'Roboto';
-        console.log({ fontWeight, fontStyle, fontFamily });
-        newStyle.push(font_style_generator(fontFamily, fontWeight, fontStyle));
+        if (style && style.fontFamily) {
+          const fontWeight = style.fontWeight ? style.fontWeight : '400';
+          const fontStyle = style.fontStyle ? style.fontStyle : 'normal';
+          const fontFamily = style.fontFamily ? style.fontFamily : 'Roboto';
+          newStyle.push(font_style_generator(fontFamily, fontWeight, fontStyle));
+        } else {
+          newStyle.push(style);
+        }
       });
-      console.log('After', newStyle);
       return React.cloneElement(origin, {
         style: [{}, origin.props.style, ...newStyle],
       });
