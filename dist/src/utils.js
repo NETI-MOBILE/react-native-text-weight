@@ -60,7 +60,7 @@ export function override(...args) {
         else {
             let newStyle = [];
             origin.props.style.map((style) => {
-                if (style && style.fontFamily) {
+                if (style && (style.fontFamily || style.fontWeight || style.fontStyle)) {
                     const fontWeight = style.fontWeight ? style.fontWeight : '400';
                     const fontStyle = style.fontStyle ? style.fontStyle : 'normal';
                     const fontFamily = style.fontFamily ? style.fontFamily : 'Roboto';
